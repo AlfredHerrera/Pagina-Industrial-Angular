@@ -1,0 +1,88 @@
+<div class="row">
+  <div id="sidebar" class="col-12 col-sm-4 col-lg-2">
+    <!--Menu-->
+    <div class="user-admin">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="https://api.adorable.io/avatars/128/abott6@adorable.io.png" alt="" class="avatar">
+        </div>
+        <div class="col-md-8">
+          <div class="user-info">
+            <span class="name">Derian Pinto</span>
+            <span class="rol">Administrador</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" [routerLink]="['home']">
+              <i class="fa fa-fw fa-dashboard"></i>
+              <span class="nav-link-text">
+                Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-file"></i>
+              <span class="nav-link-text">
+                Paginas</span>
+            </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="login.html">Login Page</a>
+            </li>
+            <li>
+              <a href="register.html">Registration Page</a>
+            </li>
+            <li>
+              <a [routerLink]="['mantenimiento']">Equipo Industrial</a>
+            </li>
+            <li>
+              <a [routerLink]="['ofertas']">Ofertas</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-sitemap"></i>
+              <span class="nav-link-text">
+                Menu Levels</span>
+            </a>
+          <ul class="sidenav-second-level collapse" id="collapseMulti">
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+            <li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="#">
+              <i class="fa fa-fw fa-link"></i>
+              <span class="nav-link-text">
+                Link</span>
+            </a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+    <!--Fin Menu-->
+  </div>
+  <div id="wrapper" class="col-12 col-sm-8 col-lg-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>

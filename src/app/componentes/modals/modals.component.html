@@ -1,0 +1,72 @@
+<!-- modal agregr -->
+<div class="modal fade mo-agregar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content panel-heading">
+      <h1><small>Agregar Nueva Oferta</small></h1>
+      <hr>
+      <form (ngSubmit)="guardar()" #forma="ngForm" >
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Nombre:</small></h5>
+          <div class="col-9">
+            <input [(ngModel)]="Producto.nombre" name="nombre_guardar" class="form-control"  type="text" placeholder="Nombre del Producto" id="example-text-input" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Nombre Corto:</small></h5>
+          <div class="col-9">
+            <input [(ngModel)]="Producto.nombreCorto" name="nombreCorto_guardar" class="form-control" type="text" placeholder="Nombre Para Mostrar" id="example-text-input" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Sku:</small></h5>
+          <div class="col-3">
+            <input [(ngModel)]="Producto.sku" name="sku_guardar" type="text" class="form-control" placeholder="O9023" required>
+          </div>
+          <div class="col-2 col-form-label">
+            <h5 for="example-text-input" class="col-2"><small>Precio:</small></h5>
+          </div>
+          <div class="col-3">
+            <input [(ngModel)]="Producto.precio" name="precio_guardar" type="text" class="form-control" placeholder="$ 200.00 MXN" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Imagen:</small></h5>
+          <div class="col-9">
+            <input type="file"
+             ngFileSelect
+             [options]="options"
+             (onUpload)="handleUpload($event)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Caracteristica 1:</small></h5>
+          <div class="col-9">
+            <textarea [(ngModel)]="Producto.caracteristicas[1]" name="caracteristica1_guardar" class="form-control" id="exampleTextarea" placeholder="Catacteristica Grande" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3 col-form-label"><small>Caracteristica 2:</small></h5>
+          <div class="col-9">
+            <textarea [(ngModel)]="Producto.caracteristicas[2]" name="caracteristica2_guardar" class="form-control" id="exampleTextarea" placeholder="Catacteristica 2" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3 col-form-label"><small>Caracteristica 3:</small></h5>
+          <div class="col-9">
+            <textarea [(ngModel)]="Producto.caracteristicas[3]" name="caracteristica3_guardar" class="form-control" id="exampleTextarea" placeholder="Catacteristica 3" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-8">
+
+          </div>
+          <div class="col-4">
+            <button [disabled]="!forma.valid" class="fa fa-plus-circle btn btn-success btn-lg" type="submit" > Agregar</button>
+            <button class="fa fa-times-circle btn btn-danger btn-lg" type="submit"> Cancelar</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
