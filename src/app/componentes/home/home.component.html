@@ -12,25 +12,18 @@
     </div>
     <div class="panel-body">
       <!-- app.component.html -->
-  <input type="file"
-         ngFileSelect
-         [options]="options"
-         (onUpload)="handleUpload($event)">
+      <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+        <h1>Drag &amp; Drop</h1>
+      </div>
 
-  <!-- drag & drop file example-->
-  <style>
-    .file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
-  </style>
-  <div ngFileDrop
-       [options]="options"
-       (onUpload)="handleUpload($event)"
-       [ngClass]="{'file-over': hasBaseDropZoneOver}"
-       (onFileOver)="fileOverBase($event)">
-  </div>
+      <label class="upload-button">
+        <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+        or choose file(s)
+      </label>
 
-  <div>
-  Response: {{ uploadFile | json }}
-  </div>
+      <button type="button" class="start-upload-btn" (click)="startUpload()">
+        Start Upload
+      </button>
 
     </div>
     <!-- /.panel-body -->

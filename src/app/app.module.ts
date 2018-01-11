@@ -5,10 +5,11 @@ import { DataTablesModule } from 'angular-datatables';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgFileUploadModule } from '@mohuk/ng2-uploader';
+import { NgUploaderModule } from 'ngx-uploader';
 //servicios
 import { ServicioOfertasService } from './servicios/servicio-ofertas.service';
 import { MoverImagenesService } from './servicios/mover-imagenes.service';
+import { ServicioIndustrialService } from './servicios/servicio-industrial.service';
 
 //rutas
 import { app_routing } from './app.routs';
@@ -37,7 +38,7 @@ import { KeysPipe } from './pipes/keys.pipe';
     KeysPipe,
   ],
   imports: [
-    NgFileUploadModule,
+    NgUploaderModule,
     FormsModule,
     BrowserModule,
     DataTablesModule,
@@ -47,7 +48,8 @@ import { KeysPipe } from './pipes/keys.pipe';
   ],
   providers: [
     ServicioOfertasService,
-    MoverImagenesService
+    MoverImagenesService,
+    ServicioIndustrialService
   ],
   bootstrap: [AppComponent]
 })

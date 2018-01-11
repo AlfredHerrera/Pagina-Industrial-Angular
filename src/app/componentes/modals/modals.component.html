@@ -32,10 +32,7 @@
         <div class="form-group row">
           <h5 for="example-text-input" class="col-3"><small>Imagen:</small></h5>
           <div class="col-9">
-            <input type="file"
-             ngFileSelect
-             [options]="options"
-             (onUpload)="handleUpload($event)">
+              <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
           </div>
         </div>
         <div class="form-group row">

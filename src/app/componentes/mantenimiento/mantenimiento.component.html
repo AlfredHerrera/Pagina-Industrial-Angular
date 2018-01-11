@@ -8,10 +8,34 @@
   <!--Content-->
   <div class="panel panel-default">
     <div class="panel-heading">
-      Blank Page
+    <h1><small>Ofertas Industriales</small></h1>
+    </div>
+    <div class="panel-button">
+      <i class="btn btn-success btn-lg fa fa-plus-circle" data-toggle="modal" data-target=".mo-agregar"> Agregar</i>
     </div>
     <div class="panel-body">
-
+       <!-- inicio datatables -->
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Nombre</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of ofertas | keys; let i = index">
+              <td> {{ ofertas[item].sku }} </td>
+              <td> {{ ofertas[item].nombre }} </td>
+              <td>
+                <i class="fa fa-search btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)=info_Individual(item);></i>
+                <i class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".mo-editar" (click)="info_Individual(item, ofertas[item])"></i>
+                <i class="fa fa-trash-o btn btn-danger" data-toggle="modal2" data-target=".mo-eliminar"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+ <!-- fin datatables -->
     </div>
     <!-- /.panel-body -->
   </div>
