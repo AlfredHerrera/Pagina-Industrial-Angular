@@ -23,6 +23,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { ModalsComponent } from './componentes/modals/modals.component';
 import { KeysPipe } from './pipes/keys.pipe';
+import { ModalIndustrialComponent } from './componentes/modal-industrial/modal-industrial.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { KeysPipe } from './pipes/keys.pipe';
     LoginComponent,
     ModalsComponent,
     KeysPipe,
+    ModalIndustrialComponent,
   ],
   imports: [
     NgUploaderModule,

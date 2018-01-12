@@ -10,6 +10,9 @@
     <div class="panel-heading">
     <h1><small>Ofertas Industriales</small></h1>
     </div>
+    <button type="button" class="btn btn-danger" (click)="ejemplo()">
+      ejemplo
+    </button>
     <div class="panel-button">
       <i class="btn btn-success btn-lg fa fa-plus-circle" data-toggle="modal" data-target=".mo-agregar"> Agregar</i>
     </div>
@@ -42,6 +45,107 @@
   <!--End Content-->
 </div>
 
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content panel-heading">
+      <h2><small>{{ ofertaIndividual?.nombre}}</small></h2>
+      <div class="row padding-top">
+        <div class="col-lg-1">
+
+        </div>
+        <div class="col-lg-5 text-center">
+          <img src="../../../assets/images/ofertas/{{ofertaIndividual?.imagen}}.png" class="img-thumbnail padding-top" [alt]="ofertaIndividual?.nombre">
+          <p> Sku: {{ ofertaIndividual?.sku }}</p>
+          <p> Precio: {{ ofertaIndividual?.precio }}</p>
+        </div>
+        <div class="col-lg-5">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Características de {{ ofertaIndividual?.nombre }}</li>
+            <li class="list-group-item list-group">{{ ofertaIndividual?.caracteristicas[1] }}</li>
+            <li class="list-group-item list-group">{{ ofertaIndividual?.caracteristicas[2] }}</li>
+            <li class="list-group-item list-group">{{ ofertaIndividual?.caracteristicas[3] }}</li>
+          </ul>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal editar -->
+
+<div class="modal fade mo-editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content panel-heading">
+      <h1><small>Editar Oferta</small></h1>
+      <hr>
+      <form (ngSubmit)="editarProducto()" #formas="ngForm">
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Nombre:</small></h5>
+          <div class="col-9">
+            <input [(ngModel)]=ofertaIndividual.nombre name="nombre_editar" class="form-control" type="text" placeholder="Nombre del Producto" id="example-text-input">
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Nombre Corto:</small></h5>
+          <div class="col-9">
+            <input [(ngModel)]="ofertaIndividual.nombreCorto" name="nombreCorto_editar" class="form-control" type="text" placeholder="Nombre Para Mostrar" id="example-text-input">
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Sku:</small></h5>
+          <div class="col-3">
+            <input [(ngModel)]="ofertaIndividual.sku" name="sku_editar" type="text" class="form-control" placeholder="O9023">
+          </div>
+          <div class="col-2 col-form-label">
+            <h5 for="example-text-input" class="col-2"><small>Precio:</small></h5>
+          </div>
+          <div class="col-3">
+            <input [(ngModel)]="ofertaIndividual.precio" name="precio_editar" type="text" class="form-control" placeholder="$ 200.00 MXN">
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Imagen:</small></h5>
+          <div class="col-9">
+            <input [(ngModel)]="ofertaIndividual.imagen" name="imagen_editar" type="text" class="form-control-file" id="exampleInputFile">
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3"><small>Caracteristica 1:</small></h5>
+          <div class="col-9">
+            <textarea [(ngModel)]="ofertaIndividual.caracteristicas[1]" name="caracteristica1_editar" class="form-control" id="exampleTextarea" placeholder="Catacteristica Grande" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3 col-form-label"><small>Caracteristica 2:</small></h5>
+          <div class="col-9">
+            <textarea [(ngModel)]="ofertaIndividual.caracteristicas[2]" name="caracteristica2_editar" class="form-control" id="exampleTextarea" placeholder="Catacteristica 2" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h5 for="example-text-input" class="col-3 col-form-label"><small>Caracteristica 3:</small></h5>
+          <div class="col-9">
+            <textarea [(ngModel)]="ofertaIndividual.caracteristicas[3]" name="caracteristica3_editar" class="form-control" id="exampleTextarea" placeholder="Catacteristica 3" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-8">
+
+          </div>
+          <div class="col-4">
+            <button [disabled]="!formas.valid" class="fa fa-plus-circle btn btn-success btn-lg" type="submit" (click)="GuardarBase()"> Actualizar</button>
+            <button class="fa fa-times-circle btn btn-danger btn-lg" type="submit"> Cancelar</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<app-modal-industrial (ofertasIndustriales)=consultar()></app-modal-industrial>
 <footer class="footer">
   <div class="container">
     <span class="text-muted">© 2017 <a href="https://codegea.com">CodeGea</a>, all rights reserved. Made with <i class="fa fa-heart"></i> for a better web.</span>
