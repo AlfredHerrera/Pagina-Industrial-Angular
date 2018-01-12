@@ -10,9 +10,6 @@
     <div class="panel-heading">
     <h1><small>Ofertas Industriales</small></h1>
     </div>
-    <button type="button" class="btn btn-danger" (click)="ejemplo()">
-      ejemplo
-    </button>
     <div class="panel-button">
       <i class="btn btn-success btn-lg fa fa-plus-circle" data-toggle="modal" data-target=".mo-agregar"> Agregar</i>
     </div>
@@ -75,7 +72,7 @@
 
 <!-- modal editar -->
 
-<div class="modal fade mo-editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade mo-editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mo-editar">
   <div class="modal-dialog modal-lg">
     <div class="modal-content panel-heading">
       <h1><small>Editar Oferta</small></h1>
@@ -134,8 +131,8 @@
 
           </div>
           <div class="col-4">
-            <button [disabled]="!formas.valid" class="fa fa-plus-circle btn btn-success btn-lg" type="submit" (click)="GuardarBase()"> Actualizar</button>
-            <button class="fa fa-times-circle btn btn-danger btn-lg" type="submit"> Cancelar</button>
+            <button [disabled]="!formas.valid" class="fa fa-plus-circle btn btn-success btn-lg" type="submit"> Actualizar</button>
+            <button class="fa fa-times-circle btn btn-danger btn-lg" type="submit" data-dismiss="modal" id="cerrarModal"> Cancelar</button>
           </div>
 
         </div>

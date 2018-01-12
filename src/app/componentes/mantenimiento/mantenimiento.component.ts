@@ -4,7 +4,11 @@ import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { DataTableDirective } from 'angular-datatables';
 import { producto } from '../../interfaces/producto.interface';
+
 declare var swal: any;
+declare var jQuery: any;
+declare var $: any;
+
 
 @Component({
   selector: 'app-mantenimiento',
@@ -31,7 +35,6 @@ export class MantenimientoComponent {
   dtTrigger: Subject<any> = new Subject();
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
-  bandera:boolean = false;
 
   constructor(private IndustrialService: ServicioIndustrialService) {
     this.dtOptions = {
@@ -51,25 +54,6 @@ export class MantenimientoComponent {
 
   }
 
-  ejemplo(){
-    swal({    title: "Are you sure?",
-              text: "You will not be able to recover this imaginary file!",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Yes, delete it!",
-              closeOnConfirm: false },
-              function(){
-              swal("Deleted!", "Your imaginary file has been deleted.", "success");
-              });
-    // swal("Se Guardo Correctamente", "", "success");
-  }
-
-  ejemplo2(){
-    console.log("hola mundo");
-    this.bandera = false;
-  }
-
   info_Individual(nombre: string) {
     this.key$ = nombre;
     this.IndustrialService.getProducto(nombre)
@@ -79,15 +63,17 @@ export class MantenimientoComponent {
   }
 
   editarProducto() {
-    this.IndustrialService.actualizarProducto(this.ofertaIndividual, this.key$)
-      .subscribe((res: producto) => {
-        console.log(res)
-        this.consultar();
-      })
+      this.IndustrialService.actualizarProducto(this.ofertaIndividual, this.key$)
+        .subscribe((res: producto) => {
+          this.ofertas[this.key$] = res;
+          swal("Se Actualizo Correctamente", "", "success");
+          this.consultar();
+        })
+        $('#cerrarModal').click();
   }
+
   consultar() {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first
       dtInstance.destroy();
       this.IndustrialService.getProductos()
         .subscribe((data: any) => {

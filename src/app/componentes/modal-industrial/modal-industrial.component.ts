@@ -40,13 +40,11 @@ Producto:producto ={
 
 guardar(){
   this.startUpload();
-
   this._servicio.nuevoProducto(this.Producto)
     .subscribe( res=> {
       console.log(res)
       this.enviarOfertas();
     });
-
 }
 
 enviarOfertas(){
