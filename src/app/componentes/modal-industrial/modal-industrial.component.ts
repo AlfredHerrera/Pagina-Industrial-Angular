@@ -54,6 +54,7 @@ enviarOfertas(){
 }
 
   onUploadOutput(output: UploadOutput): void {
+    this.Producto.imagen = output.file.name
     if (output.type === 'allAddedToQueue') {
     } else if (output.type === 'addedToQueue'  && typeof output.file !== 'undefined') { // add file to array when added
       this.files.push(output.file);
@@ -80,7 +81,7 @@ enviarOfertas(){
       method: 'POST',
       data: { foo: 'bar' }
     };
-
+    console.log(event);
     this.uploadInput.emit(event);
   }
 
